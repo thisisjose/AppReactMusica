@@ -1,131 +1,155 @@
-/* CSS styles for the Music José React application */
-
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #181818;
 }
 
 .contenedor-principal {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  padding-bottom: 70px; /* espacio para el footer */
+  box-sizing: border-box;
 }
 
 .barra-lateral {
-    width: 250px;
-    background-color: #333;
-    color: white;
-    padding: 20px;
+  width: 220px;
+  background: #111;
+  color: #fff;
+  padding: 30px 0 0 0;
+  min-height: 100vh;
 }
 
 .navegacion ul {
-    list-style-type: none;
-    padding: 0;
+  list-style: none;
+  padding: 0 0 0 30px;
 }
 
 .navegacion li {
-    margin: 15px 0;
-    display: flex;
-    align-items: center;
-}
-
-.navegacion img {
-    margin-right: 10px;
+  margin: 25px 0;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
 }
 
 .contenido {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  flex: 1;
+  position: relative;
+  background: transparent;
+  overflow: auto;
+  min-height: 100vh;
 }
 
 .seccion-fondo {
-    position: relative;
-    overflow: hidden;
+  width: 100%;
+  height: 220px;
+  position: relative;
+  z-index: 1;
+  margin-left: 0;
 }
-
 .fondo-difuminado {
-    width: 100%;
-    height: auto;
-    opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(6px) brightness(0.7);
+  display: block;
 }
 
 .mis-canciones {
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    margin: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  margin-top: -120px; /* Sube la lista sobre el banner */
+  padding: 40px 40px 0 40px;
+  background: none;
+  color: #fff;
 }
+
 
 .lista-musica {
-    max-height: 300px;
-    overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
+
+.lista-musica li {
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #333;
+  font-size: 1.1em;
+  background: none;
+  border-radius: 0;
+  margin: 0;
+}
+.lista-musica li:last-child {
+  border-bottom: none;
+}
 .barra-music {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #444;
-    color: white;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 70px;
+  background: #222;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.4);
+  z-index: 100;
 }
 
 .info-cancion {
-    display: flex;
-    align-items: center;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
 }
 
-.img-circular {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+.titulo-cancion {
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
-.texto-cancion {
-    flex: 1;
-}
-
-.btn-like {
-    background: none;
-    border: none;
-    cursor: pointer;
+.artista {
+  font-size: 0.95em;
+  color: #aaa;
 }
 
 .controles {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin: 0 5px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
 }
 
 .progreso-tiempo {
-    display: flex;
-    align-items: center;
+  min-width: 120px;
+  text-align: right;
+  font-size: 1em;
+  color: #ccc;
+}
+
+@media (max-width: 900px) {
+  .barra-lateral {
+    width: 60px;
+    padding: 10px 0 0 0;
+  }
+  .mis-canciones {
     margin-left: 10px;
-}
-
-.barra-progreso {
-    flex: 1;
-    height: 5px;
-    background-color: #ccc;
-    border-radius: 5px;
-    margin: 0 10px;
-    position: relative;
-}
-
-.progreso {
-    height: 100%;
-    background-color: #76c7c0;
-    width: 0; /* This will be dynamically updated */
-    border-radius: 5px;
+    margin-right: 10px;
+    padding: 10px;
+  }
+  .barra-music {
+    padding: 0 10px;
+  }
 }

@@ -6,11 +6,13 @@ import './styles/style.css';
 
 function App() {
   return (
-    <div className="contenedor-principal">
-      <AsideBar />
-      <MainContent />
+    <>
+      <div className="contenedor-principal">
+        <AsideBar />
+        <MainContent />
+      </div>
       <FooterBar />
-    </div>
+    </>
   );
 }
 
