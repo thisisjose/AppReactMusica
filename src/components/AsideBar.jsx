@@ -5,10 +5,10 @@ const AsideBar = () => {
     <aside className="barra-lateral">
       <nav className="navegacion">
         <ul>
-          <li>🔍 Buscar</li>
-          <li>🎵 Álbum</li>
-          <li>⭐ Favoritos</li>
-          <li>📄 Playlist</li>
+          <li>Buscar</li>
+          <li>Álbum</li>
+          <li>Favoritos</li>
+          <li>Playlist</li>
         </ul>
       </nav>
     </aside>
