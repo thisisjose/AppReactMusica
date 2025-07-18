@@ -2,12 +2,12 @@ import React, { useEffect, useState, useRef } from 'react';
 
 const FooterBar = ({ song, onNext, onPrev }) => {
   const [currentTime, setCurrentTime] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true); // Controla si se está reproduciendo
+  const [isPlaying, setIsPlaying] = useState(true);
   const intervalRef = useRef(null);
 
   useEffect(() => {
     setCurrentTime(0);
-    setIsPlaying(true); // Al cambiar de canción, iniciar reproducción automáticamente
+    setIsPlaying(true);
 
     if (intervalRef.current) clearInterval(intervalRef.current);
 
@@ -61,27 +61,34 @@ const FooterBar = ({ song, onNext, onPrev }) => {
 
   return (
     <footer className="barra-music">
-      <div className="info-cancion">
-        {song ? (
-          <>
-            <span className="titulo-cancion">{song.titulo}</span>
-            <span className="artista">{song.artista}</span>
-          </>
-        ) : (
-          <>
-            <span className="titulo-cancion">Selecciona una canción</span>
-            <span className="artista">-</span>
-          </>
+      <div className="info-cancion-footer">
+        {song && song.albumCompleto?.portada && (
+          <img
+            src={`https://api-musica.netlify.app/${song.albumCompleto.portada}`}
+            alt={song.album}
+            className="footer-album-img"
+          />
         )}
+        <div className="footer-song-text">
+          {song ? (
+            <>
+              <span className="titulo-cancion">{song.titulo}</span>
+              <span className="artista">{song.artista}</span>
+            </>
+          ) : (
+            <>
+              <span className="titulo-cancion">Selecciona una canción</span>
+              <span className="artista">-</span>
+            </>
+          )}
+        </div>
       </div>
 
       <div className="controles">
         <button className="btn" title="Anterior" onClick={onPrev}>⏮️</button>
-
         <button className="btn" title={isPlaying ? "Pausa" : "Reproducir"} onClick={togglePlay}>
           {isPlaying ? "⏸️" : "▶️"}
         </button>
-
         <button className="btn" title="Siguiente" onClick={onNext}>⏭️</button>
       </div>
 

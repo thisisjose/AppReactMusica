@@ -9,10 +9,19 @@ const MusicList = ({ songs, playSongAt }) => {
         <li
           key={song.id}
           onClick={() => playSongAt(index)}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', alignItems: 'center', display: 'flex', gap: 16 }}
         >
-          <span style={{ fontWeight: "bold", marginRight: 12 }}>{song.titulo}</span>
-          <span style={{ color: "#aaa" }}>{song.artista}</span>
+          {song.albumCompleto?.portada && (
+            <img
+              src={`https://api-musica.netlify.app/${song.albumCompleto.portada}`}
+              alt={song.album}
+              style={{ width: 48, height: 48, objectFit: 'cover', borderRadius: 6, marginRight: 12 }}
+            />
+          )}
+          <div>
+            <span style={{ fontWeight: "bold", marginRight: 12 }}>{song.titulo}</span>
+            <span style={{ color: "#aaa" }}>{song.artista}</span>
+          </div>
         </li>
       ))}
     </ul>

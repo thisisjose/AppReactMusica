@@ -221,3 +221,44 @@ body, html {
     padding: 0 10px;
   }
 }
+
+.info-cancion-footer {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  max-width: 260px;
+  gap: 14px;
+}
+
+.footer-album-img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 8px;
+  box-shadow: 0 2px 8px #0006;
+}
+
+.footer-song-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 170px;
+  overflow: hidden;
+}
+
+.footer-song-text .titulo-cancion {
+  font-size: 1.08em;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer-song-text .artista {
+  font-size: 0.97em;
+  color: #bdbdbd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
