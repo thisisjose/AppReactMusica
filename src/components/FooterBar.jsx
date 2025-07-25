@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-const FooterBar = ({ song, onNext, onPrev }) => {
+const FooterBar = ({ song, onNext, onPrev, isFavorite, onToggleFavorite }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const intervalRef = useRef(null);
@@ -82,6 +82,24 @@ const FooterBar = ({ song, onNext, onPrev }) => {
             </>
           )}
         </div>
+        {/* LIKE */}
+        {song && (
+          <button
+            className="btn"
+            title={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
+            onClick={onToggleFavorite}
+            style={{
+              marginLeft: 12,
+              color: isFavorite ? "#ff4081" : "#fff",
+              fontSize: "1.5em",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            {isFavorite ? "❤️" : "🤍"}
+          </button>
+        )}
       </div>
 
       <div className="controles">

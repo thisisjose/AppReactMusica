@@ -15,6 +15,7 @@ import './styles/style.css';
 function App() {
   const [songs, setSongs] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(null);
+  const [favorites, setFavorites] = useState([]); // <-- favoritos
 
   useEffect(() => {
     fetch("https://api-musica.netlify.app/api/canciones")
@@ -43,6 +44,15 @@ function App() {
     }
   };
 
+  // Agrega y quita una cancion de favoritos chauuu
+  const toggleFavorite = (songId) => {
+    setFavorites((prev) =>
+      prev.includes(songId)
+        ? prev.filter((id) => id !== songId)
+        : [...prev, songId]
+    );
+  };
+
   return (
     <Router>
       <div className="contenedor-principal">
@@ -53,7 +63,15 @@ function App() {
             element={<MainContent songs={songs} playSongAt={playSongAt} />}
           />
           <Route path="/album" element={<Album songs={songs} />} />
-          <Route path="/favoritos" element={<Favoritos />} />
+          <Route
+            path="/favoritos"
+            element={
+              <Favoritos
+                songs={songs.filter((s) => favorites.includes(s.id))}
+                playSongAt={playSongAt}
+              />
+            }
+          />
           <Route path="/playlist" element={<Playlist />} />
           <Route
             path="/album/:titulo"
@@ -65,6 +83,10 @@ function App() {
         song={currentSong}
         onNext={playNext}
         onPrev={playPrev}
+        isFavorite={currentSong ? favorites.includes(currentSong.id) : false}
+        onToggleFavorite={() =>
+          currentSong && toggleFavorite(currentSong.id)
+        }
       />
     </Router>
   );
